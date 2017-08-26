@@ -1,0 +1,14 @@
+.Image-Details {
+  padding: 0em 1em 0em 1em;
+  color: #fff;
+  max-width: 30em;
+}
+
+.Specifications {
+  display: table;
+}
+
+.Specs-Icon {
+  font-size: 2em;
+  margin: .2em;
+}
