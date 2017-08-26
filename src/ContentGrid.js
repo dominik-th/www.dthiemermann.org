@@ -9,7 +9,7 @@ class ContentGrid extends Component {
     return (
       <div className="Content-Grid">
         <div className="Flex-Item Map-Item">
-          <Map className="Map" center={location} zoom={7}>
+          <Map className="Map" center={location} zoom={12}>
             <TileLayer
               url='https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZG9taW5pay10aCIsImEiOiJjajZxYnF4ZnowN25qMzJvNnAyMzF0OW13In0.wt8ntpDLnptHNro4B7S7Fg'
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

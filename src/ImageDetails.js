@@ -11,19 +11,19 @@ class ImageDetails extends Component {
         <div className='Specifications'>
           <div data-tooltip='Camera model'>
             <MdPhotoCamera className='Specs-Icon' />
-            { this.props.image.cameraModel }
+            { this.props.image.cameraMake } { this.props.image.cameraModel }
           </div>
           <div data-tooltip='Aperture'>
             <MdCamera className='Specs-Icon' />
-            { this.props.image.aperture }
+            &fnof;/{ this.props.image.aperture.toFixed(1) }
           </div>
           <div data-tooltip='Exposure time'>
             <MdTimer className='Specs-Icon' />
-            { this.props.image.exposure }
+            1/{ Math.round(1/this.props.image.exposure) } sec.
           </div>
           <div data-tooltip='Focal length'>
             <MdVisibility className='Specs-Icon' />
-            { this.props.image.focalLength }
+            { this.props.image.focalLength } mm
           </div>
           <div data-tooltip='ISO'>
             <MdIso className='Specs-Icon' />
