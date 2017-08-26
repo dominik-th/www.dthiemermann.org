@@ -3,7 +3,7 @@ import _ from 'lodash';
 import Cover from './Cover';
 import ContentGrid from './ContentGrid';
 import './App.css';
-import storage from './storage.json';
+import storage from './env/storage.json';
 
 // Exiftool:
 // exiftool -j -n
