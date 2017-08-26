@@ -22,4 +22,6 @@ yarn-error.log*
 
 public/images/*
 !public/images/.gitkeep
-src/storage.json
+
+src/env/*
+!src/env/.gitkeep
