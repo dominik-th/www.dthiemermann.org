@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react';
 import './Cover.css';
 
@@ -10,8 +11,8 @@ class Cover extends Component {
     return (
       <div className="Cover" style={coverStyle}>
         <div className="Image-Controls">
-          <div className="Prev-Image Control" onClick={this.props.onClickPrevious}><Icon size='huge' name='angle left'/></div>
-          <div className="Next-Image Control" onClick={this.props.onClickNext}><Icon size='huge' name='angle right'/></div>
+          <Link to={this.props.prevImage.id}><div className="Prev-Image Control"><Icon size='huge' name='angle left'/></div></Link>
+          <Link to={this.props.nextImage.id}><div className="Next-Image Control"><Icon size='huge' name='angle right'/></div></Link>
         </div>
       </div>
     );

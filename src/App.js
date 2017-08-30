@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { connect } from 'react-redux';
+import { loadCoverImage } from './actions'
 import Cover from './Cover';
 import ContentGrid from './ContentGrid';
 import './App.css';
-import storage from './env/storage.json';
 
 // Exiftool:
 // exiftool -j -n
@@ -13,51 +13,50 @@ import storage from './env/storage.json';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    var randomIndex = _.random(0, storage.images.length - 1);
-    var paramIndex = -1;
-    if (props.match.params.imageId) {
-      paramIndex = _.findIndex(storage.images, ['id', props.match.params.imageId])
+  componentWillMount() {
+    this.props.showCoverImage(this.props.currentImageId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.currentImageId !== nextProps.currentImageId) {
+      this.props.showCoverImage(nextProps.currentImageId);
     }
-    var currentIndex = paramIndex === -1 ? randomIndex : paramIndex;
-    this.state = {
-      currentImage: currentIndex
-    };
-  }
-
-  previousImage = () => {
-    var previousIndex = this.state.currentImage === 0 ? storage.images.length-1 : this.state.currentImage - 1;
-    this.changeCoverImage(previousIndex);
-  }
-
-  nextImage = () => {
-    var nextIndex = this.state.currentImage + 1 === storage.images.length ? 0 : this.state.currentImage + 1;
-    this.changeCoverImage(nextIndex);
-  }
-
-  changeCoverImage(index) {
-    this.setState({
-      ...this.state,
-      currentImage: index
-    });
-    this.props.history.push(storage.images[index].id);
   }
 
   render() {
     return (
       <div className="App">
         <Cover
-          imageUrl={`images/${storage.images[this.state.currentImage].fileName}`}
-          onClickPrevious={this.previousImage}
-          onClickNext={this.nextImage}
+          imageUrl={`images/${this.props.currentImage.fileName}`}
+          prevImage={this.props.prevImage}
+          nextImage={this.props.nextImage}
         />
         <ContentGrid
-          image={storage.images[this.state.currentImage]}
+          image={this.props.currentImage}
         />
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showCoverImage: (id) => {
+      dispatch(loadCoverImage(id));
+    }
+  };
+};
+
+const mapStateToProps = (state, props) => {
+  return {
+    currentImageId: props.match.params.imageId,
+    currentImage: state.cover.currentImage,
+    prevImage: state.cover.prevImage,
+    nextImage: state.cover.nextImage
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
