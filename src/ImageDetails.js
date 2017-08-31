@@ -3,6 +3,8 @@ import { Header } from 'semantic-ui-react';
 import { MdPhotoCamera, MdCamera, MdTimer, MdVisibility, MdIso, MdFlashOn, MdFlashOff } from 'react-icons/lib/md';
 import './ImageDetails.css';
 
+const flashFiredExifValues = [1,5,7,9,13,15,25,29,31,65,69,71,73,77,79,89,93,95];
+
 class ImageDetails extends Component {
   render() {
     return (
@@ -29,10 +31,17 @@ class ImageDetails extends Component {
             <MdIso className='Specs-Icon' />
             { this.props.image.iso }
           </div>
-          <div data-tooltip='Flash'>
-            <MdFlashOn className='Specs-Icon' />
-            Did fire
-          </div>
+          {flashFiredExifValues.indexOf(this.props.image.flash) !== -1 ? (
+            <div data-tooltip='Flash'>
+              <MdFlashOn className='Specs-Icon' />
+              Did fire
+            </div>
+          ) : (
+            <div data-tooltip='Flash'>
+              <MdFlashOff className='Specs-Icon' />
+              Did not fire
+            </div>
+          )}
         </div>
       </div>
     );
