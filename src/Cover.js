@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
+import Mousetrap from 'mousetrap';
 import { Icon } from 'semantic-ui-react';
 import './Cover.css';
 
 class Cover extends Component {
+
+  componentWillMount() {
+    Mousetrap.bind(['left', 'a'], (event) => {
+      this.props.history.push(this.props.prevImage.id);
+    });
+    Mousetrap.bind(['right', 'd'], (event) => {
+      this.props.history.push(this.props.nextImage.id);
+    });
+  }
+
+  componentWillUnmount() {
+    Mousetrap.unbind(['left', 'a', 'right', 'd']);
+  }
+
   render() {
     var coverStyle = {
       backgroundImage: `linear-gradient(rgba(0,0,0,0) 90%, rgba(34,34,34,1) 100%), url(${this.props.imageUrl})`
@@ -19,4 +35,4 @@ class Cover extends Component {
   }
 }
 
-export default Cover;
+export default withRouter(Cover);
