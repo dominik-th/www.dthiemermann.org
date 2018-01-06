@@ -24,4 +24,4 @@ public/images/*
 !public/images/.gitkeep
 
 src/env/*
-!src/env/.gitkeep
+!src/env/config.sample.js
