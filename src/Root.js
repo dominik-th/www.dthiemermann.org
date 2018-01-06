@@ -1,8 +1,9 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
 import reducer from './reducers';
 import createHistory from 'history/createBrowserHistory';
 import PiwikReactRouter from 'piwik-react-router';
@@ -15,7 +16,10 @@ if (config.piwik) {
   history = PiwikReactRouter(config.piwik).connectToHistory(history);
 }
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  applyMiddleware(thunkMiddleware)
+);
 
 const Root = () => (
   <Provider store={store}>
