@@ -4,8 +4,8 @@ module.exports = {
     siteId: 1,
     clientTrackerName: 'piwik.js',
     serverTrackerName: 'piwik.php'
-  }
+  },
   backend: {
-    url: 'https://app.example.com/api/',
+    url: 'https://app.example.com/api',
   }
 }
