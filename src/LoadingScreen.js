@@ -6,7 +6,7 @@ class LoadingScreen extends Component {
     return (
       <Dimmer active>
         <Loader size="medium" >
-          <Header as="h3" inverted color="teal" content="Loading..." />
+          <Header as="h3" inverted color="teal" content="Loading..." subheader={this.props.subheader} />
         </Loader>
       </Dimmer>
     )

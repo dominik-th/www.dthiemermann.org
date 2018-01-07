@@ -1,4 +1,7 @@
 module.exports = {
+  website: {
+    title: 'www.example.com'
+  },
   piwik: {
     url: 'https://piwik.example.com',
     siteId: 1,
