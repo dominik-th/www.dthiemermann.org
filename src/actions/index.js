@@ -20,9 +20,9 @@ export function fetchPhotos() {
     dispatch(requestPhotos());
     return fetch(`${config.backend.url}/photo`).then(
       response => response.json(),
+    ).then(
+      json => dispatch(receivePhotos(json)),
       error => console.log('error fetching photos')
-    ).then(json => {
-      dispatch(receivePhotos(json));
-    });
+    );
   }
 }
