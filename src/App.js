@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Transition } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchPhotos } from './actions';
@@ -16,22 +17,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        { this.props.loading ? (
+        <Transition.Group animation="fade" duration={500}>
+          { this.props.loading &&
             <div>
               <LoadingScreen subheader={config.website.title} />
             </div>
-          ) : (
-            <div>
-              <Cover
-                imageUrl={`${config.backend.url}/photo/${this.props.currentImage.id}`}
-                prevImage={this.props.prevImage}
-                nextImage={this.props.nextImage}
-              />
-              <ContentGrid
-                image={this.props.currentImage}
-              />
-            </div>
-          ) }
+          }
+        </Transition.Group>
+        { (!this.props.loading && this.props.currentImage) &&
+          <div>
+            <Cover
+              imageUrl={`${config.backend.url}/photo/${this.props.currentImage.id}`}
+              prevImage={this.props.prevImage}
+              nextImage={this.props.nextImage}
+            />
+            <ContentGrid
+              image={this.props.currentImage}
+            />
+          </div>
+        }
       </div>
     );
   }
