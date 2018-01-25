@@ -10,6 +10,7 @@ import throttle from 'lodash/throttle';
 import { loadState, saveState } from './localStorage';
 import reducer from './reducers';
 import App from './App';
+import Login from './Login';
 import config from './env/config';
 
 var history = createHistory();
@@ -37,6 +38,7 @@ const Root = () => (
   <Provider store={store}>
     <Router history={history}>
       <Switch>
+        <Route exact path="/login" component={Login} />
         <Route path="/:imageId" component={App} />
         <Route path="/" component={App} />
       </Switch>
