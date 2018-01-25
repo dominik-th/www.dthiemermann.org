@@ -3,10 +3,12 @@ import { Router } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
-import reducer from './reducers';
 import createHistory from 'history/createBrowserHistory';
 import PiwikReactRouter from 'piwik-react-router';
+import thunkMiddleware from 'redux-thunk';
+import throttle from 'lodash/throttle';
+import { loadState, saveState } from './localStorage';
+import reducer from './reducers';
 import App from './App';
 import config from './env/config';
 
@@ -16,10 +18,20 @@ if (config.piwik) {
   history = PiwikReactRouter(config.piwik).connectToHistory(history);
 }
 
+const persistedState = loadState();
 const store = createStore(
   reducer,
-  applyMiddleware(thunkMiddleware)
+  persistedState,
+  applyMiddleware(thunkMiddleware),
 );
+
+store.subscribe(throttle(() => {
+  saveState({
+    auth: {
+      token: store.getState().auth.token
+    }
+  });
+}, 1000));
 
 const Root = () => (
   <Provider store={store}>
