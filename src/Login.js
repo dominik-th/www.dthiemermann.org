@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import qs from 'query-string';
 import { loginUser, cancelWithError } from './actions/auth';
