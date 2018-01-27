@@ -10,5 +10,8 @@ module.exports = {
   },
   backend: {
     url: 'https://app.example.com/api',
+  },
+  auth: {
+    githubUrl: 'https://github.com/login/oauth/authorize?client_id={CLIENT_ID}&state=%STATE%&redirect_uri={APP_URL}/login?provider=github',
   }
 }
