@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
+import { logoutUser } from './actions/auth';
 import config from './env/config';
 import './NavigationBar.css';
 
@@ -13,8 +14,8 @@ class NavigationBar extends Component {
     window.location = githubOauthUrl;
   }
 
-  onLogoutClick() {
-    // this.props.dispatch(logout());
+  onLogoutClick = () => {
+    this.props.dispatch(logoutUser());
   }
 
   render() {

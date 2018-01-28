@@ -1,4 +1,4 @@
-import { LOGGING_IN, LOGIN_SUCCESS, LOGIN_FAILED, CANCEL_WITH_ERROR } from '../actions/auth';
+import { LOGGING_IN, LOGIN_SUCCESS, LOGIN_FAILED, LOGGING_OUT, CANCEL_WITH_ERROR } from '../actions/auth';
 
 const initialState = {
   token: null,
@@ -23,6 +23,11 @@ export default function cover(state = initialState, action) {
       return Object.assign({}, state, {
         token: null,
         error: action.message
+      });
+
+    case LOGGING_OUT:
+      return Object.assign({}, state, {
+        token: null
       });
 
     case CANCEL_WITH_ERROR:

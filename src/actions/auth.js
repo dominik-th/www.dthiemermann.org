@@ -24,6 +24,13 @@ export function loginFailed(message) {
   }
 }
 
+export const LOGGING_OUT = 'LOGGING_OUT';
+export function loggingOut() {
+  return {
+    type: LOGGING_OUT
+  }
+}
+
 export const CANCEL_WITH_ERROR = 'CANCEL_WITH_ERROR';
 export function cancelWithError(message) {
   return {
@@ -49,5 +56,31 @@ export function loginUser(provider, code) {
         dispatch(loginFailed('error logging in'));
       }
     );
+  }
+}
+
+export function logoutUser() {
+  return function(dispatch, getState) {
+    const token = getState().auth.token;
+    dispatch(loggingOut());
+    return fetch(`${config.backend.url}/token/revoke/${token}`, {
+      method: 'get',
+      headers: new Headers({
+        'Authorization': 'token ' + token
+      })
+    }).then(
+      response => response.json(),
+    ).then(
+      json => {
+        if (json.success) {
+          // successfully revoked token
+        } else {
+          // did not revoke token
+        }
+      },
+      error => {
+        // request failed
+      }
+    )
   }
 }
