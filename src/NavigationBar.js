@@ -22,9 +22,14 @@ class NavigationBar extends Component {
     return (
       <nav className="NavigationBar">
         { this.props.loggedIn ?
-          <Button onClick={this.onLogoutClick} basic inverted>
-            Log Out
-          </Button>
+          <div>
+            <Button as={NavLink} to="photos" basic inverted>
+              Photos
+            </Button>
+            <Button onClick={this.onLogoutClick} basic inverted>
+              Log Out
+            </Button>
+          </div>
         :
           <Button onClick={this.onLoginClick} basic icon inverted labelPosition="left">
             <Icon name="github" inverted size="large" />
