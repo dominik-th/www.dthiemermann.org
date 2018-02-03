@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
+import { Router, Redirect } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -33,6 +33,14 @@ store.subscribe(throttle(() => {
     }
   });
 }, 1000));
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    store.getState().auth.token
+      ? <Component {...props} />
+      : <Redirect to='/' />
+  )} />
+);
 
 const Root = () => (
   <Provider store={store}>
