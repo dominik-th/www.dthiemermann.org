@@ -10,6 +10,7 @@ import throttle from 'lodash/throttle';
 import { loadState, saveState } from './localStorage';
 import reducer from './reducers';
 import App from './App';
+import Photos from './Photos';
 import Login from './Login';
 import config from './env/config';
 
@@ -47,6 +48,7 @@ const Root = () => (
     <Router history={history}>
       <Switch>
         <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/photos" component={Photos} />
         <Route path="/:imageId" component={App} />
         <Route path="/" component={App} />
       </Switch>
