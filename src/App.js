@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchPhotos } from './actions';
 import config from './env/config';
-import LoadingScreen from './LoadingScreen';
+import LoadingScreen from './components/LoadingScreen';
 import NavBar from './features/NavBar';
 import Cover from './Cover';
 import ContentGrid from './ContentGrid';

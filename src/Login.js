@@ -3,7 +3,7 @@ import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import qs from 'query-string';
 import { loginUser, cancelWithError } from './actions/auth';
-import LoadingScreen from './LoadingScreen';
+import LoadingScreen from './components/LoadingScreen';
 
 class Login extends Component {
 
