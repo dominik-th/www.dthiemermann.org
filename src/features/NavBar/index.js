@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
-import { logoutUser } from './actions/auth';
-import config from './env/config';
-import './NavigationBar.css';
+import { logoutUser } from '../../actions/auth';
+import config from '../../env/config';
+import './NavBar.css';
 
-class NavigationBar extends Component {
+class NavBar extends Component {
 
   onLoginClick() {
     const state = Math.random().toString(36).substr(2, 10);
@@ -20,7 +20,7 @@ class NavigationBar extends Component {
 
   render() {
     return (
-      <nav className="NavigationBar">
+      <nav className="NavBar">
         { this.props.loggedIn ?
           <div>
             <Button as={NavLink} to="photos" basic inverted>
@@ -50,4 +50,4 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps
-)(NavigationBar);
+)(NavBar);

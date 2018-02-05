@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import NavigationBar from './NavigationBar';
+import NavBar from './features/NavBar';
 
 class Photos extends Component {
   render() {
     return (
       <div>
-        <NavigationBar />
+        <NavBar />
         Photos
       </div>
     );

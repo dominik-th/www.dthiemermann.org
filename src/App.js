@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { fetchPhotos } from './actions';
 import config from './env/config';
 import LoadingScreen from './LoadingScreen';
-import NavigationBar from './NavigationBar';
+import NavBar from './features/NavBar';
 import Cover from './Cover';
 import ContentGrid from './ContentGrid';
 
@@ -27,7 +27,7 @@ class App extends Component {
         </Transition.Group>
         { (!this.props.loading && this.props.currentImage) &&
           <div>
-            <NavigationBar />
+            <NavBar />
             <Cover
               imageUrl={`${config.backend.url}/photo/${this.props.currentImage.id}`}
               prevImage={this.props.prevImage}
