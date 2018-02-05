@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import qs from 'query-string';
-import { loginUser, cancelWithError } from './actions/auth';
-import LoadingScreen from './components/LoadingScreen';
+import { loginUser, cancelWithError } from '../../actions/auth';
+import LoadingScreen from '../../components/LoadingScreen';
 
 class Login extends Component {
 
@@ -14,7 +14,17 @@ class Login extends Component {
       this.props.dispatch(cancelWithError('missing params'));
     } else if (!this.props.loggedIn) {
       // todo: validate state csrf
-      this.props.dispatch(loginUser(params.provider, params.code));
+      try {
+        const state = JSON.parse(localStorage.getItem('oauth2state'));
+        if (params.state === state.state && Date.now() < state.stateExpiry) {
+          this.props.dispatch(loginUser(params.provider, params.code));
+        } else {
+          this.props.dispatch(cancelWithError('csrf verification failed'));
+        }
+        localStorage.removeItem('oauth2state');
+      } catch (err) {
+        this.props.dispatch(cancelWithError('csrf verification failed'));
+      }
     }
   }
 

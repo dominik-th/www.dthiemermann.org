@@ -10,8 +10,18 @@ class NavBar extends Component {
 
   onLoginClick() {
     const state = Math.random().toString(36).substr(2, 10);
-    const githubOauthUrl = config.auth.githubUrl.replace('%STATE%', state);
-    window.location = githubOauthUrl;
+    const stateExpiry = Date.now() + (60 * 1000);
+    try {
+      const serializedState = JSON.stringify({
+        state,
+        stateExpiry
+      });
+      localStorage.setItem('oauth2state', serializedState);
+      const githubOauthUrl = config.auth.githubUrl.replace('%STATE%', state);
+      window.location = githubOauthUrl;
+    } catch (err) {
+      console.log('Could not set CSRF protection');
+    }
   }
 
   onLogoutClick = () => {
