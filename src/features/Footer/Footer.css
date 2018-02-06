@@ -1,0 +1,16 @@
+.Footer-Content {
+  padding-top: 2em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.Footer-Column {
+  padding: .5em;
+}
+
+footer ul {
+  color: #fff;
+  list-style: none;
+  padding: 0;
+}
