@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Transition } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchPhotos } from './actions';
-import config from './env/config';
-import LoadingScreen from './components/LoadingScreen';
-import NavBar from './features/NavBar';
-import Cover from './Cover';
-import ContentGrid from './ContentGrid';
+import { fetchPhotos } from '../../actions';
+import config from '../../env/config';
+import LoadingScreen from '../../components/LoadingScreen';
+import NavBar from '../../features/NavBar';
+import Cover from '../../features/Cover';
+import PhotoDetails from '../../features/PhotoDetails';
 
 class App extends Component {
 
@@ -33,7 +33,7 @@ class App extends Component {
               prevImage={this.props.prevImage}
               nextImage={this.props.nextImage}
             />
-            <ContentGrid
+            <PhotoDetails
               image={this.props.currentImage}
             />
           </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import NavBar from './features/NavBar';
+import NavBar from '../../features/NavBar';
 
 class Photos extends Component {
   render() {
