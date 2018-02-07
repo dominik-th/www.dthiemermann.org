@@ -7,10 +7,10 @@ import createHistory from 'history/createBrowserHistory';
 import PiwikReactRouter from 'piwik-react-router';
 import thunkMiddleware from 'redux-thunk';
 import throttle from 'lodash/throttle';
-import { loadState, saveState } from './localStorage';
+import { loadState, saveState } from './utils/localStorage';
 import reducer from './reducers';
-import App from './App';
-import Photos from './Photos';
+import App from './scenes/App';
+import Photos from './scenes/Photos';
 import Login from './features/Login';
 import config from './env/config';
 
