@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
-import ImageDetails from './ImageDetails';
-import './ContentGrid.css';
+import Specs from './Specs';
+import './PhotoDetails.css';
 
-class ContentGrid extends Component {
+class PhotoDetails extends Component {
   render() {
     const location = [this.props.image.location.lat, this.props.image.location.long]
     return (
@@ -18,11 +18,11 @@ class ContentGrid extends Component {
           </Map>
         </div>
         <div className="Flex-Item">
-          <ImageDetails image={this.props.image} />
+          <Specs image={this.props.image} />
         </div>
       </div>
     );
   }
 }
 
-export default ContentGrid;
+export default PhotoDetails;

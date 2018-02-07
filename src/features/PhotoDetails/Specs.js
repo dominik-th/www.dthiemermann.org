@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Header } from 'semantic-ui-react';
 import { MdPhotoCamera, MdCamera, MdTimer, MdVisibility, MdIso, MdFlashOn, MdFlashOff } from 'react-icons/lib/md';
-import './ImageDetails.css';
+import './Specs.css';
 
 const flashFiredExifValues = [1,5,7,9,13,15,25,29,31,65,69,71,73,77,79,89,93,95];
 
-class ImageDetails extends Component {
+class Specs extends Component {
   render() {
     return (
       <div className="Image-Details">
@@ -48,4 +48,4 @@ class ImageDetails extends Component {
   }
 }
 
-export default ImageDetails;
+export default Specs;
