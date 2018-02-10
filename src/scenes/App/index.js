@@ -7,6 +7,7 @@ import config from '../../env/config';
 import LoadingScreen from '../../components/LoadingScreen';
 import NavBar from '../../features/NavBar';
 import Cover from '../../features/Cover';
+import Footer from '../../features/Footer';
 import PhotoDetails from '../../features/PhotoDetails';
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
             />
           </div>
         }
+        <Footer />
       </div>
     );
   }

@@ -1,16 +1,45 @@
-.Footer-Content {
-  padding-top: 2em;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+footer a {
+  color: #fff;
 }
 
-.Footer-Column {
-  padding: .5em;
+footer a:hover {
+  color: #ddd;
 }
 
 footer ul {
   color: #fff;
   list-style: none;
   padding: 0;
+}
+
+footer .Footer-Content {
+  padding-top: 2em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+footer .Footer-Column {
+  padding: .5em;
+}
+
+footer .Made-With-Column {
+  max-width: 30%;
+  align-self: center;
+}
+
+footer .Made-With {
+  font-family: 'open_sanslight';
+  color: gray;
+  font-size: 1em;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+
+footer .Made-With > .Heart {
+  color: red;
+}
+
+footer .ui.header {
+  text-transform: uppercase;
 }
