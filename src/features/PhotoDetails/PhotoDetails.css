@@ -1,17 +1,23 @@
-.Photo-Details-Wrapper {
-  width: 100%;
+.Photo-Details-Container {
   background-color: #fff;
-  line-height: 1;
+}
+
+.Photo-Details-Wrapper {
+  padding-top: 2em;
+  padding-bottom: 2em;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: wrap-reverse;
   align-items: flex-start;
 }
 
+.Flex-Item {
+  align-self: center;
+}
+
 .Map-Item {
-  height: 25em;
-  width: 100%;
-  max-width: 30em;
+  height: 20em;
+  flex-basis: 50%;
+  flex-grow: 1;
 }
 
 .Map {
