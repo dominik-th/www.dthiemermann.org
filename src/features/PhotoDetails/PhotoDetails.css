@@ -1,11 +1,11 @@
-.Content-Grid {
+.Photo-Details-Wrapper {
   width: 100%;
-  margin-top: 2em;
+  background-color: #fff;
   line-height: 1;
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .Map-Item {

@@ -9,7 +9,6 @@ class Specs extends Component {
   render() {
     return (
       <div className="Image-Details">
-        <Header color='teal' size='large'>{ this.props.image.title }</Header>
         <div className='Specifications'>
           <div data-tooltip='Camera model'>
             <MdPhotoCamera className='Specs-Icon' />
