@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
 import { MdPhotoCamera, MdCamera, MdTimer, MdVisibility, MdIso, MdFlashOn, MdFlashOff } from 'react-icons/lib/md';
 import './Specs.css';
 
