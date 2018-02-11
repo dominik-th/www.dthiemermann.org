@@ -21,6 +21,7 @@ footer .Footer-Content {
 
 footer .Footer-Column {
   padding: .5em;
+  align-items: stretch;
 }
 
 footer .Made-With-Column {
@@ -42,4 +43,5 @@ footer .Made-With > .Heart {
 
 footer .ui.header {
   text-transform: uppercase;
+  text-align: center;
 }
