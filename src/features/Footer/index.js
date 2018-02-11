@@ -14,11 +14,53 @@ class Footer extends Component {
               </p>
             </div>
             <div className="Footer-Column">
-              <Header as="h3" inverted color="teal">Title 1</Header>
+              <Header as="h3" inverted color="teal">Sitemap</Header>
               <ul>
-                <li>Element 1</li>
-                <li>Element 2</li>
-                <li>Element 3</li>
+                <li>
+                  <a href="#">
+                    <Icon name="home" />Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <Icon name="photo" />Photos
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <Icon name="id badge" />About me
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <Icon name="book" />Portfolio
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="Footer-Column">
+              <Header as="h3" inverted color="teal">Services</Header>
+              <ul>
+                <li>
+                  <a href="#">
+                    <Icon name="git" />Gitea
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <Icon name="cloud" />Seafile
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <Icon name="feed" />TT-RSS
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <Icon name="calculator" />Pokémon Go IV Calculator
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="Footer-Column">
