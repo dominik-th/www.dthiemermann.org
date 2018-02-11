@@ -6,6 +6,25 @@ import Specs from './Specs';
 import './PhotoDetails.css';
 
 class PhotoDetails extends Component {
+  onMapEnter = () => {
+    this.refs.map.leafletElement.setZoom(11);
+  }
+
+  onMapExit = () => {
+    this.refs.map.leafletElement.setZoom(6);
+  }
+
+  onMapHover = (mouseEvent) => {
+    const size = this.refs.map.leafletElement.getSize();
+    const center = [size.x/2, size.y/2];
+    const distance = mouseEvent.containerPoint.distanceTo(center)/size.distanceTo(center);
+    if (distance < 0.15) {
+      this.refs.map.leafletElement.setView(this.refs.location.props.position, 15, {animate: false});
+    } else {
+      this.refs.map.leafletElement.setZoom(11);
+    }
+  }
+
   render() {
     const location = [this.props.image.location.lat, this.props.image.location.long];
     return (
@@ -22,12 +41,15 @@ class PhotoDetails extends Component {
                 zoomAnimation={false}
                 dragging={false}
                 scrollWheelZoom={false}
+                onMouseover={this.onMapEnter}
+                onMouseout={this.onMapExit}
+                onMousemove={this.onMapHover}
               >
                 <TileLayer
                   url='https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZG9taW5pay10aCIsImEiOiJjajZxYnF4ZnowN25qMzJvNnAyMzF0OW13In0.wt8ntpDLnptHNro4B7S7Fg'
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 />
-                <Marker position={location} />
+                <Marker position={location} ref="location" />
               </Map>
             </div>
             <div className="Flex-Item">
