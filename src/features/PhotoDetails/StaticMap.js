@@ -8,29 +8,39 @@ const propTypes = {
 }
 
 const defaultProps = {
-  zoomLevels: [7, 10, 13],
+  zoomLevels: [7, 11, 14],
 }
 
 class StaticMap extends Component {
   handleMouseover = () => {
-    this.refs.map.leafletElement.setZoom(10);
+    const { zoomLevels } = this.props;
+    if (zoomLevels.length > 1) {
+      this.setZoom(zoomLevels[1]);
+    } else {
+      this.setZoom(zoomLevels[0]);
+    }
   }
 
   handleMouseout = () => {
-    this.refs.map.leafletElement.setZoom(6);
+    this.setZoom(this.props.zoomLevels[0]);
   }
 
   handleMousemove = ({ containerPoint }) => {
-    const size = this.refs.map.leafletElement.getSize();
-    const center = [size.x/2, size.y/2];
-    const distance = containerPoint.distanceTo(center)/size.distanceTo(center);
-    if (distance < 0.15) {
-      this.refs.map.leafletElement.setView(this.refs.location.props.center, 15, {animate: false});
-      this.refs.location.leafletElement.setRadius(30);
-    } else {
-      this.refs.map.leafletElement.setZoom(11);
-      this.refs.location.leafletElement.setRadius(15);
+    const { zoomLevels } = this.props;
+    if (zoomLevels.length > 2) {
+      const size = this.refs.map.leafletElement.getSize();
+      const center = [size.x/2, size.y/2];
+      const distance = Math.min(1, containerPoint.distanceTo(center)/Math.min(size.x/2, size.y/2));
+      const stepSize = 1/(zoomLevels.length-1);
+      const step = Math.floor((1-distance)/stepSize)+1;
+      const markerRadius = step === zoomLevels.length-1 ? 30 : undefined;
+      this.setZoom(zoomLevels[step], markerRadius);
     }
+  }
+
+  setZoom = (level, markerRadius = 15) => {
+    this.refs.map.leafletElement.setView(this.refs.location.props.center, level);
+    this.refs.location.leafletElement.setRadius(markerRadius);
   }
 
   render() {
