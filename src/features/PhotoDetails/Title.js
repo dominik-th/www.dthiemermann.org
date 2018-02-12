@@ -7,7 +7,7 @@ class Title extends Component {
     return (
       <div className="Photo-Title">
         <Container>
-          <Header as="h2" inverted color="teal">{ this.props.text }</Header>
+          <Header as="h1" inverted color="teal">{ this.props.text }</Header>
           <p>
             { this.props.description ? 
               this.props.description :
