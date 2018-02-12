@@ -72,14 +72,19 @@ class Footer extends Component {
                     <Icon name="github" />dominik-th
                   </a>
                 </li>
-                <li className="Reddit">
-                  <a href="#">
-                    <Icon name="reddit" />soon&#8482;
+                <li className="Flickr">
+                  <a href="https://flickr.com/dthiemermann">
+                    <Icon name="flickr" />dthiemermann
                   </a>
                 </li>
                 <li className="Twitter">
                   <a href="https://twitter.com/dthiemermann">
                     <Icon name="twitter" />dthiemermann
+                  </a>
+                </li>
+                <li className="Reddit">
+                  <a href="#">
+                    <Icon name="reddit" />soon&#8482;
                   </a>
                 </li>
                 <li className="LinkedIn">
