@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Header, Icon } from 'semantic-ui-react';
 import './Footer.css';
 
@@ -17,24 +18,24 @@ class Footer extends Component {
               <Header as="h3" inverted color="teal">Sitemap</Header>
               <ul>
                 <li>
-                  <a href="#">
+                  <Link to="/">
                     <Icon name="home" />Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/photos">
                     <Icon name="photo" />Photos
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/about">
                     <Icon name="id badge" />About me
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/portfolio">
                     <Icon name="book" />Portfolio
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -42,12 +43,12 @@ class Footer extends Component {
               <Header as="h3" inverted color="teal">Services</Header>
               <ul>
                 <li>
-                  <a href="#">
+                  <a href="https://git.dthiemermann.org">
                     <Icon name="git" />Gitea
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="https://cloud.dthiemermann.org">
                     <Icon name="cloud" />Seafile
                   </a>
                 </li>
@@ -57,7 +58,7 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="https://pokemon.doth.pw">
                     <Icon name="calculator" />Pokémon Go IV Calculator
                   </a>
                 </li>
@@ -77,8 +78,8 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li className="Twitter">
-                  <a href="#">
-                    <Icon name="twitter" />soon&#8482;
+                  <a href="https://twitter.com/dthiemermann">
+                    <Icon name="twitter" />dthiemermann
                   </a>
                 </li>
                 <li className="LinkedIn">
