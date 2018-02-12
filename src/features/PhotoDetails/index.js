@@ -14,7 +14,7 @@ class PhotoDetails extends Component {
         <Container>
           <div className="Photo-Details-Wrapper">
             <div className="Flex-Item Map-Item">
-              <StaticMap className="Map" location={location} zoomLevels={[7, 10, 13]} />
+              <StaticMap className="Map" location={location} />
             </div>
             <div className="Flex-Item">
               <Specs image={this.props.image} />

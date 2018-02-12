@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const propTypes = {
+  location: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoomLevels: PropTypes.arrayOf(PropTypes.number),
+}
+
+const defaultProps = {
+  zoomLevels: [7, 10, 13],
+}
 
 class StaticMap extends Component {
   handleMouseover = () => {
@@ -51,5 +61,8 @@ class StaticMap extends Component {
     );
   }
 }
+
+StaticMap.propTypes = propTypes;
+StaticMap.defaultProps = defaultProps;
 
 export default StaticMap;
