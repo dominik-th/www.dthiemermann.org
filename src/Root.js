@@ -48,7 +48,7 @@ const Root = () => (
     <Router history={history}>
       <Switch>
         <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/photos" component={Photos} />
+        <Route exact path="/photos" component={Photos} />
         <Route path="/:imageId" component={App} />
         <Route path="/" component={App} />
       </Switch>

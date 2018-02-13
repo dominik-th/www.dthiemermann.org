@@ -31,11 +31,11 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="NavBar">
+        <Button as={NavLink} to="photos" basic inverted>
+          Photos
+        </Button>
         { this.props.loggedIn ?
           <div>
-            <Button as={NavLink} to="photos" basic inverted>
-              Photos
-            </Button>
             <Button onClick={this.onLogoutClick} basic inverted>
               Log Out
             </Button>
