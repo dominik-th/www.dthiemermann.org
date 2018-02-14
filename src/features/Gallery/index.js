@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  photos: PropTypes.arrayOf(PropTypes.shape({
+    url: PropTypes.string,
+  })),
+}
 
 class Gallery extends Component {
   componentDidMount() {
@@ -27,5 +34,7 @@ class Gallery extends Component {
     );
   }
 }
+
+Gallery.propTypes = propTypes;
 
 export default Gallery;
