@@ -9,6 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 import throttle from 'lodash/throttle';
 import { loadState, saveState } from './utils/localStorage';
 import reducer from './reducers';
+import NavbarFooterLayout from './layouts/NavbarFooterLayout';
 import App from './scenes/App';
 import Photos from './scenes/Photos';
 import Login from './features/Login';
@@ -48,9 +49,8 @@ const Root = () => (
     <Router history={history}>
       <Switch>
         <Route exact path="/login" component={Login} />
-        <Route exact path="/photos" component={Photos} />
-        <Route path="/:imageId" component={App} />
-        <Route path="/" component={App} />
+        <NavbarFooterLayout exact path="/photos" component={Photos} />
+        <NavbarFooterLayout path="/:imageId?" component={App} />
       </Switch>
     </Router>
   </Provider>

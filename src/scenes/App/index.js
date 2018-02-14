@@ -28,7 +28,6 @@ class App extends Component {
         </Transition.Group>
         { (!this.props.loading && this.props.currentImage) &&
           <div>
-            <NavBar />
             <Cover
               imageUrl={`${config.backend.url}/photo/${this.props.currentImage.id}`}
               prevImage={this.props.prevImage}
@@ -39,7 +38,6 @@ class App extends Component {
             />
           </div>
         }
-        <Footer />
       </div>
     );
   }
