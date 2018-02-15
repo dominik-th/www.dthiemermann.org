@@ -11,9 +11,10 @@ import Footer from '../../features/Footer';
 import PhotoDetails from '../../features/PhotoDetails';
 
 class App extends Component {
-
   componentWillMount() {
-    this.props.dispatch(fetchPhotos());
+    if (!this.props.currentImage) {
+      this.props.dispatch(fetchPhotos());
+    }
   }
 
   render() {
