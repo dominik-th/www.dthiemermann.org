@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
@@ -6,8 +7,15 @@ import { logoutUser } from '../../actions/auth';
 import config from '../../env/config';
 import './NavBar.css';
 
-class NavBar extends Component {
+const propTypes = {
+  type: PropTypes.oneOf(['static', 'absolute', 'fixed']),
+}
 
+const defaultProps = {
+  type: 'static',
+}
+
+class NavBar extends Component {
   onLoginClick() {
     const state = Math.random().toString(36).substr(2, 10);
     const stateExpiry = Date.now() + (60 * 1000);
@@ -29,8 +37,23 @@ class NavBar extends Component {
   }
 
   render() {
+    const { type } = this.props;
+    let navBarStyles = {};
+    if (type === 'absolute' || type === 'fixed') {
+      navBarStyles = {
+        position: type,
+        backgroundColor: 'rgba(0,0,0,.25)',
+      }
+    } else {
+      navBarStyles = {
+        backgroundColor: '#222',
+      }
+    }
     return (
-      <nav className="NavBar">
+      <nav className="NavBar" style={navBarStyles}>
+        <Button as={NavLink} to="/" basic inverted>
+          Home
+        </Button>
         <Button as={NavLink} to="photos" basic inverted>
           Photos
         </Button>
@@ -50,6 +73,9 @@ class NavBar extends Component {
     );
   }
 }
+
+NavBar.propTypes = propTypes;
+NavBar.defaultProps = defaultProps;
 
 const mapStateToProps = (state, ownProps) => {
   const { token } = state.auth;

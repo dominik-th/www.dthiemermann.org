@@ -4,11 +4,11 @@ import NavBar from '../../features/NavBar';
 import Footer from '../../features/Footer';
 import './NavbarFooterLayout.css';
 
-const NavbarFooterLayout = ({component: Component, ...rest}) => (
+const NavbarFooterLayout = ({component: Component, navbarType, ...rest}) => (
   <Route {...rest} render={matchProps => (
     <div className="NavbarFooterLayout">
       <div className="Nav">
-        <NavBar />
+        <NavBar type={navbarType} />
       </div>
       <div className="Content">
        <Component {...matchProps} />
