@@ -36,6 +36,7 @@ store.subscribe(throttle(() => {
   });
 }, 1000));
 
+// eslint-disable-next-line
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     store.getState().auth.token

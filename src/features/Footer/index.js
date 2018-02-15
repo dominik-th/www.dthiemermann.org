@@ -53,7 +53,9 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  {
+                    // eslint-disable-next-line
+                  }<a href="#">
                     <Icon name="feed" />TT-RSS
                   </a>
                 </li>
@@ -83,17 +85,23 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li className="Reddit">
-                  <a href="#">
+                  {
+                    // eslint-disable-next-line
+                  }<a href="#">
                     <Icon name="reddit" />soon&#8482;
                   </a>
                 </li>
                 <li className="LinkedIn">
-                  <a href="#">
+                  {
+                    // eslint-disable-next-line
+                  }<a href="#">
                     <Icon name="linkedin" />soon&#8482;
                   </a>
                 </li>
                 <li className="Xing">
-                  <a href="#">
+                  {
+                    // eslint-disable-next-line
+                  }<a href="#">
                     <Icon name="xing" />soon&#8482;
                   </a>
                 </li>
