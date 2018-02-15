@@ -17,7 +17,6 @@ export function loginSuccess(token) {
 
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export function loginFailed(message) {
-  console.log('error: ' + message);
   return {
     type: LOGIN_FAILED,
     message
