@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Gallery.css';
 
 const propTypes = {
   photos: PropTypes.arrayOf(PropTypes.shape({
@@ -28,7 +29,7 @@ class Gallery extends Component {
       </a>
     );
     return (
-      <div ref="gallery" >
+      <div ref="gallery" className="Gallery">
         {photos}
       </div>
     );
