@@ -4,6 +4,7 @@ import { Grid } from 'semantic-ui-react';
 import { fetchPhotos } from '../../actions';
 import config from '../../env/config';
 import Gallery from '../../features/Gallery';
+import './Photos.css';
 
 const defaultProps = {
   photos: [],
@@ -20,7 +21,7 @@ class Photos extends Component {
     return (
       <div>
         <Grid centered columns={1}>
-          <Grid.Column largeScreen={14} computer={14} tablet={14} mobile={16}>
+          <Grid.Column className="Gallery-Grid-Column" largeScreen={14} computer={14} tablet={14} mobile={16}>
             <Gallery photos={this.props.photos} />
           </Grid.Column>
         </Grid>
