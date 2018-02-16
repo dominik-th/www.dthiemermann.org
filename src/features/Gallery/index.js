@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './Gallery.css';
 
 const propTypes = {
@@ -24,12 +25,12 @@ class Gallery extends Component {
 
   render() {
     const photos = this.props.photos.map((photo) => 
-      <a key={photo.id} href={photo.url}>
+      <Link key={photo.id} to={`/${photo.id}`}>
         <img alt={photo.title} src={photo.url} />
         <div className="caption">
           <div className="Caption-Text">{photo.title}</div>
         </div>
-      </a>
+      </Link>
     );
     return (
       <div ref="gallery" className="Gallery">
