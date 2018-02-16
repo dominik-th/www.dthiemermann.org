@@ -26,6 +26,9 @@ class Gallery extends Component {
     const photos = this.props.photos.map((photo) => 
       <a key={photo.id} href={photo.url}>
         <img alt={photo.title} src={photo.url} />
+        <div className="caption">
+          <div className="Caption-Text">{photo.title}</div>
+        </div>
       </a>
     );
     return (

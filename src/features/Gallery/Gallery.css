@@ -2,3 +2,19 @@
   margin-top: 2em;
   margin-bottom: 2em;
 }
+
+.caption {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 50%;
+  padding: 0 1em .5em 1em !important;
+  background-color: rgba(0,0,0,0) !important;
+  background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,.75) 75%, rgba(0,0,0,.85) 90%, rgba(0,0,0,.85) 100%);
+  opacity: 0;
+  transition: opacity .25s ease !important;
+}
+
+.caption-visible {
+  opacity: 1 !important;
+}
