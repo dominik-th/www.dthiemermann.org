@@ -49,10 +49,10 @@ const Root = () => (
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route exact path="/login" component={Login} />
-        <NavbarFooterLayout exact path="/photos" component={Photos} />
+        <NavbarFooterLayout navbarType="absolute" exact path="/" component={App} />
         <NavbarFooterLayout navbarType="absolute" exact path="/photo/:imageId?" component={App} />
-        <NavbarFooterLayout navbarType="absolute" path="/" component={App} />
+        <NavbarFooterLayout navBarType="static" exact path="/photos" component={Photos} />
+        <Route exact path="/login" component={Login} />
       </Switch>
     </Router>
   </Provider>
