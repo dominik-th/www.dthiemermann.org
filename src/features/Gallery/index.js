@@ -25,7 +25,7 @@ class Gallery extends Component {
 
   render() {
     const photos = this.props.photos.map((photo) => 
-      <Link key={photo.id} to={`/${photo.id}`}>
+      <Link key={photo.id} to={`/photo/${photo.id}`}>
         <img alt={photo.title} src={photo.url} />
         <div className="caption">
           <div className="Caption-Text">{photo.title}</div>

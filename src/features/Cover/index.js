@@ -27,8 +27,8 @@ class Cover extends Component {
     return (
       <div className="Cover" style={coverStyle}>
         <div className="Image-Controls">
-          <Link to={this.props.prevImage.id}><div className="Prev-Image Control"><Icon size='huge' name='angle left'/></div></Link>
-          <Link to={this.props.nextImage.id}><div className="Next-Image Control"><Icon size='huge' name='angle right'/></div></Link>
+          <Link to={`/photo/${this.props.prevImage.id}`}><div className="Prev-Image Control"><Icon size='huge' name='angle left'/></div></Link>
+          <Link to={`/photo/${this.props.nextImage.id}`}><div className="Next-Image Control"><Icon size='huge' name='angle right'/></div></Link>
         </div>
       </div>
     );
