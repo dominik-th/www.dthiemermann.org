@@ -1,7 +1,7 @@
 .NavBar {
+  display: flex;
   width: 100%;
   z-index: 100;
   padding: 1em;
   text-align: right;
-  transition: background-color .25s ease;
 }

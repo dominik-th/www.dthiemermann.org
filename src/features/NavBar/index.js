@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { logoutUser } from '../../actions/auth';
 import config from '../../env/config';
 import './NavBar.css';
@@ -51,24 +51,10 @@ class NavBar extends Component {
     }
     return (
       <nav className="NavBar" style={navBarStyles}>
-        <Button as={NavLink} to="/" basic inverted>
-          Home
-        </Button>
-        <Button as={NavLink} to="photos" basic inverted>
-          Photos
-        </Button>
-        { this.props.loggedIn ?
-          <div>
-            <Button onClick={this.onLogoutClick} basic inverted>
-              Log Out
-            </Button>
-          </div>
-        :
-          <Button onClick={this.onLoginClick} basic icon inverted labelPosition="left">
-            <Icon name="github" inverted size="large" />
-            Sign In
-          </Button>
-        }
+        <Menu inverted pointing secondary>
+          <Menu.Item as={NavLink} exact to="/" name='Home' />
+          <Menu.Item as={NavLink} exact to="/photos" name='Photos' />
+        </Menu>
       </nav>
     );
   }
