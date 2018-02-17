@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import pathToRegexp from 'path-to-regexp';
 import { Menu } from 'semantic-ui-react';
 import { logoutUser } from '../../actions/auth';
 import config from '../../env/config';
@@ -16,6 +17,17 @@ const defaultProps = {
 }
 
 class NavBar extends Component {
+
+  homeAlias = (match, location) => {
+    if (!match) {
+      const aliasPath = pathToRegexp('/photo/:imageId?');
+      if (!aliasPath.exec(location.pathname)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   onLoginClick() {
     const state = Math.random().toString(36).substr(2, 10);
     const stateExpiry = Date.now() + (60 * 1000);
@@ -52,7 +64,7 @@ class NavBar extends Component {
     return (
       <nav className="NavBar" style={navBarStyles}>
         <Menu inverted pointing secondary>
-          <Menu.Item as={NavLink} exact to="/" name='Home' />
+          <Menu.Item as={NavLink} isActive={this.homeAlias} exact to="/" name='Home' />
           <Menu.Item as={NavLink} exact to="/photos" name='Photos' />
         </Menu>
       </nav>
