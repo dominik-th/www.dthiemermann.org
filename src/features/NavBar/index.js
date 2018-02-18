@@ -6,6 +6,7 @@ import pathToRegexp from 'path-to-regexp';
 import { Button, Icon } from 'semantic-ui-react';
 import { logoutUser } from '../../actions/auth';
 import config from '../../env/config';
+import { getCsrfLogin } from '../../utils/localStorage';
 import './NavBar.css';
 
 const propTypes = {
@@ -45,6 +46,7 @@ class NavBar extends Component {
         backgroundColor: '#222',
       }
     }
+    const githubOauthUrl = config.auth.githubUrl.replace('%STATE%', getCsrfLogin());
     return (
       <div>
         <nav className="NavBar" style={navBarStyles}>
@@ -67,11 +69,11 @@ class NavBar extends Component {
           <div className="NavBar-Right">
             { this.props.loggedIn ?
               <div className="NavButton">
-                <Button inverted color="red" as={Link} exact to="#"><Icon name='sign out' />Sign out</Button>
+                <Button inverted color="red" onClick={this.onLogoutClick}><Icon name='sign out' />Sign out</Button>
               </div>
             :
               <div className="NavButton">
-                <Button inverted color="green" as={Link} exact to="#"><Icon name='github' />Sign in</Button>
+                <Button inverted color="green" as="a" href={githubOauthUrl}><Icon name='github' />Sign in</Button>
               </div>
             }
             <div className="NavButton ToggleNav">
