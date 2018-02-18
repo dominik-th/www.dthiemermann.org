@@ -1,7 +1,31 @@
 .NavBar {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   z-index: 100;
   padding: 1em;
-  text-align: right;
+  font-weight: 400;
+}
+
+.NavBar-Right {
+  display: flex;
+}
+
+.NavItem {
+  display: flex;
+}
+
+.NavItem a {
+  padding: .85em 1.14em .85em 1.14em;
+  color: rgba(255,255,255,.7);
+}
+
+.NavItem a:hover {
+  color: #fff;
+}
+
+.NavItem a.active {
+  color: #fff;
+  font-weight: 700;
+  border-bottom: 2px solid #fff;
 }

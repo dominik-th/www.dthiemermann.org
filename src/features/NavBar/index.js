@@ -28,22 +28,6 @@ class NavBar extends Component {
     return true;
   }
 
-  onLoginClick() {
-    const state = Math.random().toString(36).substr(2, 10);
-    const stateExpiry = Date.now() + (60 * 1000);
-    try {
-      const serializedState = JSON.stringify({
-        state,
-        stateExpiry
-      });
-      localStorage.setItem('oauth2state', serializedState);
-      const githubOauthUrl = config.auth.githubUrl.replace('%STATE%', state);
-      window.location = githubOauthUrl;
-    } catch (err) {
-      console.log('Could not set CSRF protection');
-    }
-  }
-
   onLogoutClick = () => {
     this.props.dispatch(logoutUser());
   }
@@ -62,12 +46,22 @@ class NavBar extends Component {
       }
     }
     return (
-      <nav className="NavBar" style={navBarStyles}>
-        <Menu inverted pointing secondary>
-          <Menu.Item as={NavLink} isActive={this.homeAlias} exact to="/" name='Home' />
-          <Menu.Item as={NavLink} exact to="/photos" name='Photos' />
-        </Menu>
-      </nav>
+      <div>
+        <nav className="NavBar" style={navBarStyles}>
+          <div className="NavBar-Left">
+          </div>
+          <div className="NavBar-Center">
+          </div>
+          <div className="NavBar-Right">
+            <div className="NavItem">
+              <NavLink isActive={this.homeAlias} exact to="/">Home</NavLink>
+            </div>
+            <div className="NavItem">
+              <NavLink exact to="/photos" name='Photos'>Photos</NavLink>
+            </div>
+          </div>
+        </nav>
+      </div>
     );
   }
 }
