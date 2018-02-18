@@ -7,7 +7,7 @@
   font-weight: 400;
 }
 
-.NavBar-Right {
+.NavBar > div {
   display: flex;
 }
 
@@ -18,6 +18,7 @@
 .NavItem a {
   padding: .85em 1.14em .85em 1.14em;
   color: rgba(255,255,255,.7);
+  transition: color .2s ease;
 }
 
 .NavItem a:hover {
@@ -28,4 +29,12 @@
   color: #fff;
   font-weight: 700;
   border-bottom: 2px solid #fff;
+}
+
+.NavButton {
+  align-self: center;
+}
+
+.NavButton.ToggleNav {
+  display: none;
 }

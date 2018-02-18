@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import pathToRegexp from 'path-to-regexp';
-import { Menu } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 import { logoutUser } from '../../actions/auth';
 import config from '../../env/config';
 import './NavBar.css';
@@ -49,15 +49,33 @@ class NavBar extends Component {
       <div>
         <nav className="NavBar" style={navBarStyles}>
           <div className="NavBar-Left">
-          </div>
-          <div className="NavBar-Center">
-          </div>
-          <div className="NavBar-Right">
             <div className="NavItem">
               <NavLink isActive={this.homeAlias} exact to="/">Home</NavLink>
             </div>
             <div className="NavItem">
-              <NavLink exact to="/photos" name='Photos'>Photos</NavLink>
+              <NavLink exact to="/photos">Photos</NavLink>
+            </div>
+            <div className="NavItem">
+              <NavLink exact to="#">About me</NavLink>
+            </div>
+            <div className="NavItem">
+              <NavLink exact to="#">Portfolio</NavLink>
+            </div>
+          </div>
+          <div className="NavBar-Center">
+          </div>
+          <div className="NavBar-Right">
+            { this.props.loggedIn ?
+              <div className="NavButton">
+                <Button inverted color="red" as={Link} exact to="#"><Icon name='sign out' />Sign out</Button>
+              </div>
+            :
+              <div className="NavButton">
+                <Button inverted color="green" as={Link} exact to="#"><Icon name='github' />Sign in</Button>
+              </div>
+            }
+            <div className="NavButton ToggleNav">
+              <Button basic inverted icon><Icon name='bars' /></Button>
             </div>
           </div>
         </nav>
