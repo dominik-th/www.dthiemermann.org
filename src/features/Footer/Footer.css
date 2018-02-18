@@ -50,3 +50,20 @@ footer .ui.header {
   text-transform: uppercase;
   text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+  footer .Footer-Column {
+    width: 100%;
+  }
+
+  footer .Made-With-Column {
+    max-width: 100%;
+    padding-bottom: 2em;
+    text-align: center;
+  }
+
+  footer .ui.header {
+    text-align: left;
+    border-bottom: 1px solid gray;
+  }
+}
