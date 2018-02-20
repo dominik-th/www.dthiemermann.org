@@ -38,3 +38,18 @@
 .NavButton.ToggleNav {
   display: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .NavBar {
+    flex-direction: column;
+  }
+
+  .NavBar > div {
+    flex-direction: column;
+  }
+
+  .NavItem a {
+    text-align: center;
+    width: 100%;
+  }
+}
