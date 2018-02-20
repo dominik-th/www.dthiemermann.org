@@ -18,6 +18,11 @@ const defaultProps = {
 }
 
 class NavBar extends Component {
+  componentWillMount() {
+    this.state = {
+      showNav: false,
+    };
+  }
 
   homeAlias = (match, location) => {
     if (!match) {
@@ -31,6 +36,12 @@ class NavBar extends Component {
 
   onLogoutClick = () => {
     this.props.dispatch(logoutUser());
+  }
+
+  toggleNav = () => {
+    this.setState(prevState => ({
+          showNav: !prevState.showNav,
+        }))
   }
 
   render() {
@@ -49,35 +60,37 @@ class NavBar extends Component {
     const githubOauthUrl = config.auth.githubUrl.replace('%STATE%', getCsrfLogin());
     return (
       <div>
-        <nav className="NavBar" style={navBarStyles}>
-          <div className="NavBar-Left">
-            <div className="NavItem">
-              <NavLink isActive={this.homeAlias} exact to="/">Home</NavLink>
-            </div>
-            <div className="NavItem">
-              <NavLink exact to="/photos">Photos</NavLink>
-            </div>
-            <div className="NavItem">
-              <NavLink exact to="#">About me</NavLink>
-            </div>
-            <div className="NavItem">
-              <NavLink exact to="#">Portfolio</NavLink>
-            </div>
+        <nav className="NavBar-Container" style={navBarStyles}>
+          <div className="NavButton ToggleNav">
+            <Button basic inverted icon onClick={this.toggleNav}><Icon name='bars' /></Button>
           </div>
-          <div className="NavBar-Center">
-          </div>
-          <div className="NavBar-Right">
-            { this.props.loggedIn ?
-              <div className="NavButton">
-                <Button inverted color="red" onClick={this.onLogoutClick}><Icon name='sign out' />Sign out</Button>
+          <div className={"NavBar " + (!this.state.showNav ? "Hidden" : "Visible")}>
+            <div className="NavBar-Left">
+              <div className="NavItem">
+                <NavLink isActive={this.homeAlias} exact to="/">Home</NavLink>
               </div>
-            :
-              <div className="NavButton">
-                <Button inverted color="green" as="a" href={githubOauthUrl}><Icon name='github' />Sign in</Button>
+              <div className="NavItem">
+                <NavLink exact to="/photos">Photos</NavLink>
               </div>
-            }
-            <div className="NavButton ToggleNav">
-              <Button basic inverted icon><Icon name='bars' /></Button>
+              <div className="NavItem">
+                <NavLink exact to="#">About me</NavLink>
+              </div>
+              <div className="NavItem">
+                <NavLink exact to="#">Portfolio</NavLink>
+              </div>
+            </div>
+            <div className="NavBar-Center">
+            </div>
+            <div className="NavBar-Right">
+              { this.props.loggedIn ?
+                <div className="NavButton">
+                  <Button inverted color="red" onClick={this.onLogoutClick}><Icon name='sign out' />Sign out</Button>
+                </div>
+              :
+                <div className="NavButton">
+                  <Button inverted color="green" as="a" href={githubOauthUrl}><Icon name='github' />Sign in</Button>
+                </div>
+              }
             </div>
           </div>
         </nav>

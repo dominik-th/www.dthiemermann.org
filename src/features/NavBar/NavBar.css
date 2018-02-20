@@ -1,8 +1,15 @@
-.NavBar {
+.NavBar-Container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 100%;
   z-index: 100;
+}
+
+.NavBar {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  width: 100%;
   padding: 1em;
   font-weight: 400;
 }
@@ -37,6 +44,8 @@
 
 .NavButton.ToggleNav {
   display: none;
+  align-self: flex-end;
+  padding: 1em;
 }
 
 @media only screen and (max-width: 768px) {
@@ -44,12 +53,25 @@
     flex-direction: column;
   }
 
+  .NavBar.Hidden {
+    display: none;
+  }
+
   .NavBar > div {
     flex-direction: column;
   }
 
+  .NavItem {
+    justify-content: space-around;
+  }
+
   .NavItem a {
     text-align: center;
-    width: 100%;
+    width: 75%;
+  }
+
+  .NavButton.ToggleNav {
+    display: inherit;
+    align-self: flex-end;
   }
 }
