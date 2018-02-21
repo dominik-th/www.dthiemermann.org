@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import pathToRegexp from 'path-to-regexp';
 import { Button, Icon } from 'semantic-ui-react';
 import { logoutUser } from '../../actions/auth';
-import { toggleNavBar } from '../../actions/navbar';
+import { toggleNavBar, collapseNavBar } from '../../actions/navbar';
 import config from '../../env/config';
 import { getCsrfLogin } from '../../utils/localStorage';
 import './NavBar.css';
@@ -19,9 +19,6 @@ const defaultProps = {
 }
 
 class NavBar extends Component {
-  componentWillMount() {
-  }
-
   componentDidMount() {
     // prevent scroll actions on nav
     // this.refs.nav.addEventListener("touchmove", (e) => {
@@ -30,6 +27,11 @@ class NavBar extends Component {
     // this.refs.nav.addEventListener("wheel", (e) => {
     //   e.preventDefault();
     // });
+    window.addEventListener("resize", this.autoCollapseNavBar);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.autoCollapseNavBar);
   }
 
   homeAlias = (match, location) => {
@@ -40,6 +42,12 @@ class NavBar extends Component {
       }
     }
     return true;
+  }
+
+  autoCollapseNavBar = (e) => {
+    if (!this.props.navBarCollapsed && window.innerWidth > 768) {
+      this.props.dispatch(collapseNavBar());
+    }
   }
 
   onLogoutClick = () => {
