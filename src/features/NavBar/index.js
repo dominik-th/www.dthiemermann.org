@@ -24,6 +24,15 @@ class NavBar extends Component {
     };
   }
 
+  componentDidMount() {
+    this.refs.nav.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+    });
+    this.refs.nav.addEventListener("wheel", (e) => {
+      e.preventDefault();
+    });
+  }
+
   homeAlias = (match, location) => {
     if (!match) {
       const aliasPath = pathToRegexp('/photo/:imageId?');
@@ -40,8 +49,9 @@ class NavBar extends Component {
 
   toggleNav = () => {
     this.setState(prevState => ({
-          showNav: !prevState.showNav,
-        }))
+      showNav: !prevState.showNav,
+    }));
+    window.scrollTo(0,0);
   }
 
   render() {
@@ -50,7 +60,8 @@ class NavBar extends Component {
     if (type === 'absolute' || type === 'fixed') {
       navBarStyles = {
         position: type,
-        backgroundColor: 'rgba(0,0,0,.25)',
+        backgroundColor: this.state.showNav ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.25)',
+        transition: 'background-color .25s ease',
       }
     } else {
       navBarStyles = {
@@ -60,7 +71,7 @@ class NavBar extends Component {
     const githubOauthUrl = config.auth.githubUrl.replace('%STATE%', getCsrfLogin());
     return (
       <div>
-        <nav className="NavBar-Container" style={navBarStyles}>
+        <nav ref="nav"  className="NavBar-Container" style={navBarStyles}>
           <div className="NavButton ToggleNav">
             <Button basic inverted icon onClick={this.toggleNav}><Icon name='bars' /></Button>
           </div>
