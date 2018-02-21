@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import pathToRegexp from 'path-to-regexp';
 import { Button, Icon } from 'semantic-ui-react';
 import { logoutUser } from '../../actions/auth';
+import { toggleNavBar } from '../../actions/navbar';
 import config from '../../env/config';
 import { getCsrfLogin } from '../../utils/localStorage';
 import './NavBar.css';
@@ -19,18 +20,16 @@ const defaultProps = {
 
 class NavBar extends Component {
   componentWillMount() {
-    this.state = {
-      showNav: false,
-    };
   }
 
   componentDidMount() {
-    this.refs.nav.addEventListener("touchmove", (e) => {
-      e.preventDefault();
-    });
-    this.refs.nav.addEventListener("wheel", (e) => {
-      e.preventDefault();
-    });
+    // prevent scroll actions on nav
+    // this.refs.nav.addEventListener("touchmove", (e) => {
+    //   e.preventDefault();
+    // });
+    // this.refs.nav.addEventListener("wheel", (e) => {
+    //   e.preventDefault();
+    // });
   }
 
   homeAlias = (match, location) => {
@@ -48,9 +47,7 @@ class NavBar extends Component {
   }
 
   toggleNav = () => {
-    this.setState(prevState => ({
-      showNav: !prevState.showNav,
-    }));
+    this.props.dispatch(toggleNavBar());
     window.scrollTo(0,0);
   }
 
@@ -60,12 +57,12 @@ class NavBar extends Component {
     if (type === 'absolute' || type === 'fixed') {
       navBarStyles = {
         position: type,
-        backgroundColor: this.state.showNav ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.25)',
+        background: this.props.navBarCollapsed ? 'rgba(0,0,0,.25)' : 'rgba(0,0,0,.5)',
         transition: 'background-color .25s ease',
       }
     } else {
       navBarStyles = {
-        backgroundColor: '#222',
+        background: '#222',
       }
     }
     const githubOauthUrl = config.auth.githubUrl.replace('%STATE%', getCsrfLogin());
@@ -75,7 +72,7 @@ class NavBar extends Component {
           <div className="NavButton ToggleNav">
             <Button basic inverted icon onClick={this.toggleNav}><Icon name='bars' /></Button>
           </div>
-          <div className={"NavBar " + (!this.state.showNav ? "Hidden" : "Visible")}>
+          <div className={"NavBar " + (this.props.navBarCollapsed ? "Hidden" : "Visible")}>
             <div className="NavBar-Left">
               <div className="NavItem">
                 <NavLink isActive={this.homeAlias} exact to="/">Home</NavLink>
@@ -115,8 +112,10 @@ NavBar.defaultProps = defaultProps;
 
 const mapStateToProps = (state, ownProps) => {
   const { token } = state.auth;
+  const { navBarCollapsed } = state.navbar;
   return {
-    loggedIn: token !== null
+    loggedIn: token !== null,
+    navBarCollapsed,
   }
 };
 
