@@ -1,8 +1,9 @@
 import React from 'react';
-import { Router, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import PiwikReactRouter from 'piwik-react-router';
 import thunkMiddleware from 'redux-thunk';
@@ -15,17 +16,17 @@ import Photos from './scenes/Photos';
 import Login from './features/Login';
 import config from './env/config';
 
-var history = createHistory();
-
+let history = createHistory();
 if (config.piwik) {
   history = PiwikReactRouter(config.piwik).connectToHistory(history);
 }
+const historyMiddleware = routerMiddleware(history);
 
 const persistedState = loadState();
 const store = createStore(
   reducer,
   persistedState,
-  applyMiddleware(thunkMiddleware),
+  applyMiddleware(thunkMiddleware, historyMiddleware),
 );
 
 store.subscribe(throttle(() => {
@@ -47,14 +48,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 const Root = () => (
   <Provider store={store}>
-    <Router history={history}>
+    <ConnectedRouter history={history}>
       <Switch>
         <NavbarFooterLayout navbarType="absolute" exact path="/" component={App} />
         <NavbarFooterLayout navbarType="absolute" exact path="/photo/:imageId?" component={App} />
         <NavbarFooterLayout navBarType="static" exact path="/photos" component={Photos} />
         <Route exact path="/login" component={Login} />
       </Switch>
-    </Router>
+    </ConnectedRouter>
   </Provider>
 );
 
