@@ -13,27 +13,44 @@ class App extends Component {
     if (!this.props.currentImage) {
       this.props.dispatch(fetchPhotos());
     }
+    this.state = {
+      currentImage: this.props.currentImage,
+      prevImage: this.props.prevImage,
+      nextImage: this.props.nextImage,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.randomImage || !this.state.currentImage) {
+      this.setState({
+        currentImage: nextProps.currentImage,
+        prevImage: nextProps.prevImage,
+        nextImage: nextProps.nextImage,
+      });
+    }
   }
 
   render() {
+    const { currentImage, prevImage, nextImage } = this.state;
+    const { loading } = this.props;
     return (
       <div className="App">
         <Transition.Group animation="fade" duration={500}>
-          { this.props.loading &&
+          { loading &&
             <div>
               <LoadingScreen subheader={config.website.title} />
             </div>
           }
         </Transition.Group>
-        { (!this.props.loading && this.props.currentImage) &&
+        { (!loading && currentImage) &&
           <div>
             <Cover
-              imageUrl={`${config.backend.url}/photo/${this.props.currentImage.id}`}
-              prevImage={this.props.prevImage}
-              nextImage={this.props.nextImage}
+              imageUrl={`${config.backend.url}/photo/${currentImage.id}`}
+              prevImage={prevImage}
+              nextImage={nextImage}
             />
             <PhotoDetails
-              image={this.props.currentImage}
+              image={currentImage}
             />
           </div>
         }
@@ -58,6 +75,7 @@ const mapStateToProps = (state, ownProps) => {
     stateProps.currentImage = storage.images[currentIndex];
     stateProps.prevImage = storage.images[prevIndex];
     stateProps.nextImage = storage.images[nextIndex];
+    stateProps.randomImage = paramIndex === -1;
   }
 
   return stateProps;
