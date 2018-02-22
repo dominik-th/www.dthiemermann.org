@@ -46,6 +46,10 @@ footer .Made-With > .Heart {
   color: red;
 }
 
+footer .Git-Commit {
+  text-align: center;
+}
+
 footer .ui.header {
   text-transform: uppercase;
   text-align: center;

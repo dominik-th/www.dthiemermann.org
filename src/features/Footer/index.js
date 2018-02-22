@@ -12,6 +12,14 @@ class Footer extends Component {
             <div className="Footer-Column Made-With-Column">
               <p className="Made-With">
                 www.dthiemermann.org
+                { process.env.REACT_APP_COMMIT &&
+                  <p className="Git-Commit">
+                    ver. {'\u0020'}
+                    <a href={`https://github.com/dominik-th/www.dthiemermann.org/commit/${process.env.REACT_APP_COMMIT}`}>
+                      git~{process.env.REACT_APP_COMMIT.substr(0,7)}
+                    </a>
+                  </p>
+                }
               </p>
             </div>
             <div className="Footer-Column">
