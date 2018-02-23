@@ -15,7 +15,7 @@ class Footer extends Component {
                 { process.env.REACT_APP_COMMIT &&
                   <p className="Git-Commit">
                     ver. {'\u0020'}
-                    <a href={`https://github.com/dominik-th/www.dthiemermann.org/commit/${process.env.REACT_APP_COMMIT}`}>
+                    <a href={`https://github.com/dominik-th/www.dthiemermann.org/tree/${process.env.REACT_APP_COMMIT}`}>
                       git~{process.env.REACT_APP_COMMIT.substr(0,7)}
                     </a>
                   </p>
@@ -23,7 +23,7 @@ class Footer extends Component {
               </p>
             </div>
             <div className="Footer-Column">
-              <Header as="h3" inverted color="teal">Sitemap</Header>
+              <Header as="h4" inverted color="teal">Sitemap</Header>
               <ul>
                 <li>
                   <Link to="/">
@@ -48,7 +48,7 @@ class Footer extends Component {
               </ul>
             </div>
             <div className="Footer-Column">
-              <Header as="h3" inverted color="teal">Services</Header>
+              <Header as="h4" inverted color="teal">Services</Header>
               <ul>
                 <li>
                   <a href="https://git.dthiemermann.org">
@@ -75,7 +75,7 @@ class Footer extends Component {
               </ul>
             </div>
             <div className="Footer-Column">
-              <Header as="h3" inverted color="teal">Social Media</Header>
+              <Header as="h4" inverted color="teal">Social Media</Header>
               <ul>
                 <li className="Github">
                   <a href="https://github.com/dominik-th">
