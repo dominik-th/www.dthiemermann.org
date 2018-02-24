@@ -61,9 +61,7 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li>
-                  {
-                    // eslint-disable-next-line
-                  }<a href="#">
+                  <a href="https://rss.dthiemermann.org">
                     <Icon name="feed" />TT-RSS
                   </a>
                 </li>

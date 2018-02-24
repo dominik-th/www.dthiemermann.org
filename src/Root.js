@@ -54,6 +54,7 @@ const Root = () => (
         <NavbarFooterLayout navbarType="absolute" exact path="/photo/:imageId?" component={App} />
         <NavbarFooterLayout navBarType="static" exact path="/photos" component={Photos} />
         <Route exact path="/login" component={Login} />
+        <NavbarFooterLayout navbarType="absolute" component={App} />
       </Switch>
     </ConnectedRouter>
   </Provider>
