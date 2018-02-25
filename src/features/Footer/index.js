@@ -111,6 +111,11 @@ class Footer extends Component {
                     <Icon name="xing" />soon&#8482;
                   </a>
                 </li>
+                <li className="Keybase">
+                  <a href="https://keybase.io/dthiemermann">
+                    <Icon name="key" />dthiemermann
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
