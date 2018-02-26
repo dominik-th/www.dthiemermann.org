@@ -46,6 +46,11 @@ footer .Made-With > .Heart {
   color: red;
 }
 
+footer .Email {
+  text-transform: none;
+  text-align: center;
+}
+
 footer .Git-Commit {
   text-align: center;
 }

@@ -20,6 +20,11 @@ class Footer extends Component {
                     </a>
                   </p>
                 }
+                <p className="Email">
+                  hello{'\u0040'}dthiemermann.org
+                  <br />
+                  <a href="https://keybase.io/dthiemermann/pgp_keys.asc?fingerprint=e07678d20de2be95d8659da35edfe3fdb2396132">PGP Key</a>
+                </p>
               </p>
             </div>
             <div className="Footer-Column">
