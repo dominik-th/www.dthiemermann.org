@@ -8,7 +8,7 @@ Personal homepage for [dthiemermann.org](https://www.dthiemermann.org) written i
 
 ## Setup
 
-For this project to work properly, you are also going to need the [www.dthiemermann.org-backend](#).
+For this project to work properly, you are also going to need the [www.dthiemermann.org-backend](https://github.com/dominik-th/www.dthiemermann.org-backend).
 Please set up the backend first.
 
 ```shell
