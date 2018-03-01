@@ -109,13 +109,6 @@ class Footer extends Component {
                     <Icon name="linkedin" />LinkedIn (soon&#8482;)
                   </a>
                 </li>
-                <li className="Xing">
-                  {
-                    // eslint-disable-next-line
-                  }<a href="#">
-                    <Icon name="xing" />Xing (soon&#8482;)
-                  </a>
-                </li>
                 <li className="Keybase">
                   <a href="https://keybase.io/dthiemermann">
                     <Icon name="key" />Keybase
