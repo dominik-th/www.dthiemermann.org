@@ -82,43 +82,43 @@ class Footer extends Component {
               <ul>
                 <li className="Github">
                   <a href="https://github.com/dominik-th">
-                    <Icon name="github" />dominik-th
+                    <Icon name="github" />Github
                   </a>
                 </li>
                 <li className="Flickr">
                   <a href="https://flickr.com/dthiemermann">
-                    <Icon name="flickr" />dthiemermann
+                    <Icon name="flickr" />Flickr
                   </a>
                 </li>
                 <li className="Twitter">
                   <a href="https://twitter.com/dthiemermann">
-                    <Icon name="twitter" />dthiemermann
+                    <Icon name="twitter" />Twitter
                   </a>
                 </li>
                 <li className="Reddit">
                   {
                     // eslint-disable-next-line
                   }<a href="#">
-                    <Icon name="reddit" />soon&#8482;
+                    <Icon name="reddit" />reddit (soon&#8482;)
                   </a>
                 </li>
                 <li className="LinkedIn">
                   {
                     // eslint-disable-next-line
                   }<a href="#">
-                    <Icon name="linkedin" />soon&#8482;
+                    <Icon name="linkedin" />LinkedIn (soon&#8482;)
                   </a>
                 </li>
                 <li className="Xing">
                   {
                     // eslint-disable-next-line
                   }<a href="#">
-                    <Icon name="xing" />soon&#8482;
+                    <Icon name="xing" />Xing (soon&#8482;)
                   </a>
                 </li>
                 <li className="Keybase">
                   <a href="https://keybase.io/dthiemermann">
-                    <Icon name="key" />dthiemermann
+                    <Icon name="key" />Keybase
                   </a>
                 </li>
               </ul>
