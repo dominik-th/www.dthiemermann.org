@@ -1,0 +1,12 @@
+.Nav {
+  z-index: 1000;
+}
+
+.NavbarLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+.NavbarLayout .Content {
+  flex: 1;
+}
