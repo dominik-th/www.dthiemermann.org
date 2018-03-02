@@ -23,6 +23,10 @@ body {
   overflow-y: scroll;
 }
 
+#root {
+  height: 100%;
+}
+
 .ui.container {
   transition: width .25s ease;
 }
