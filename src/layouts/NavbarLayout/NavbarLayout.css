@@ -1,10 +1,12 @@
 .Nav {
-  z-index: 1000;
+  z-index: 100;
 }
 
 .NavbarLayout {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .NavbarLayout .Content {

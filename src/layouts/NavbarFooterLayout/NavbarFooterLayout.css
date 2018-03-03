@@ -1,3 +1,7 @@
+.Nav {
+  z-index: 100;
+}
+
 .NavbarFooterLayout {
   display: flex;
   flex-direction: column;
