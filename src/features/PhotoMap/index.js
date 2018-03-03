@@ -9,7 +9,7 @@ class PhotoMap extends Component {
       <div className="Photo-Map-Container">
         <Map
           center={[0, 0]}
-          zoom={13}
+          zoom={3}
           zoomControl={false}
         >
           <ZoomControl position="bottomleft" />
