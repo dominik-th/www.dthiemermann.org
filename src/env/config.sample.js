@@ -13,5 +13,8 @@ module.exports = {
   },
   auth: {
     githubUrl: 'https://github.com/login/oauth/authorize?client_id={CLIENT_ID}&state=%STATE%&redirect_uri={APP_URL}/login?provider=github',
-  }
+  },
+  mapbox: {
+    apiKey: 'API_KEY',
+  },
 }
