@@ -4,6 +4,9 @@ Personal homepage for [dthiemermann.org](https://www.dthiemermann.org) written i
 
 ## About the project
 
+The main purpose of this project is to try out some cool Javascript stuff which also makes an interesting landing page for my domain.
+
+There are a lot of packages used to build this project, [React](https://reactjs.org/), [Redux](https://redux.js.org/), [Semantic UI React](https://react.semantic-ui.com/introduction) and [React-Leaflet](https://react-leaflet.js.org/) just to name a few.
 
 
 ## Setup
