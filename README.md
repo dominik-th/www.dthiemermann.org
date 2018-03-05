@@ -8,6 +8,7 @@ The main purpose of this project is to try out some cool Javascript stuff which 
 
 There are a lot of packages used to build this project, [React](https://reactjs.org/), [Redux](https://redux.js.org/), [Semantic UI React](https://react.semantic-ui.com/introduction) and [React-Leaflet](https://react-leaflet.js.org/) just to name a few.
 
+Also real world applications are a great way to learn about something new or lookup on how the packages are used. Anything you find here [is free to use](#license).
 
 ## Setup
 
