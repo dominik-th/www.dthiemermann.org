@@ -51,6 +51,7 @@ class App extends Component {
             />
             <PhotoDetails
               image={currentImage}
+              mapboxToken={config.mapbox.apiKey}
             />
           </div>
         }
