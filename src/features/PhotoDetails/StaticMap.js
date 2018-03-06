@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Map, CircleMarker, TileLayer } from 'react-leaflet';
 
 const propTypes = {
+  mapboxToken: PropTypes.string.isRequired,
   location: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoomLevels: PropTypes.arrayOf(PropTypes.number),
 }
@@ -63,7 +64,7 @@ class StaticMap extends Component {
         {...rest}
       >
         <TileLayer
-          url='https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZG9taW5pay10aCIsImEiOiJjajZxYnF4ZnowN25qMzJvNnAyMzF0OW13In0.wt8ntpDLnptHNro4B7S7Fg'
+          url={`https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=${this.props.mapboxToken}`}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <CircleMarker ref="location" center={this.props.location} radius={15} color="" />

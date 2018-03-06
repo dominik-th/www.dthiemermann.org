@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 import Title from './Title';
 import StaticMap from './StaticMap';
 import Specs from './Specs';
 import './PhotoDetails.css';
+
+const propTypes = {
+  mapboxToken: PropTypes.string.isRequired,
+  image: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    location: PropTypes.shape({
+      lat: PropTypes.number,
+      long: PropTypes.number,
+    }),
+  }),
+}
 
 class PhotoDetails extends Component {
   render() {
@@ -14,7 +27,7 @@ class PhotoDetails extends Component {
         <Container>
           <div className="Photo-Details-Wrapper">
             <div className="Flex-Item Map-Item">
-              <StaticMap className="Map" location={location} />
+              <StaticMap className="Map" mapboxToken={this.props.mapboxToken} location={location} />
             </div>
             <div className="Flex-Item">
               <Specs image={this.props.image} />
@@ -25,5 +38,7 @@ class PhotoDetails extends Component {
     );
   }
 }
+
+PhotoDetails.propTypes = propTypes;
 
 export default PhotoDetails;
