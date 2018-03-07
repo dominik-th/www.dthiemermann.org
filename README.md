@@ -27,6 +27,11 @@ $ cp config.sample.js config.js
 $ nano config.js
 ```
 
+Install required dependencies:
+```shell
+$ npm i
+```
+
 Build the application:
 ```shell
 $ npm run build
@@ -56,6 +61,7 @@ server {
 To upgrade run:
 ```shell
 $ git pull
+$ npm i
 $ npm run build
 ```
 
