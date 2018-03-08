@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import pathToRegexp from 'path-to-regexp';
 import { Button, Icon } from 'semantic-ui-react';
 import { logoutUser } from '../../actions/auth';

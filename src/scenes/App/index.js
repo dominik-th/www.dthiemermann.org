@@ -9,15 +9,20 @@ import Cover from '../../features/Cover';
 import PhotoDetails from '../../features/PhotoDetails';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   componentWillMount() {
     if (!this.props.currentImage) {
       this.props.dispatch(fetchPhotos());
     }
-    this.state = {
+    this.setState({
       currentImage: this.props.currentImage,
       prevImage: this.props.prevImage,
       nextImage: this.props.nextImage,
-    };
+    });
   }
 
   componentWillReceiveProps(nextProps) {
