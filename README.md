@@ -64,8 +64,8 @@ $ git pull
 $ npm i
 $ npm run build
 ```
-
-You might want to delete any previous builds afterwards.
+Before building you should check if there were made any changes to the `config.sample.js` and fill the added keys.
+You might also want to delete any previous builds afterwards.
 
 ## License
 
