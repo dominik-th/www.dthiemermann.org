@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Map, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
@@ -28,6 +29,17 @@ const defaultProps = {
 }
 
 class PhotoMap extends Component {
+  handleMoveend = (e) => {
+    let pathLocation = this.props.location.pathname;
+    let cutIndex = pathLocation.indexOf('@');
+    if (cutIndex > 0) {
+      pathLocation = pathLocation.substr(0, cutIndex - 1);
+    }
+    let center = this.refs.map.leafletElement.getCenter();
+    let zoom = this.refs.map.leafletElement.getZoom();
+    this.props.history.replace(`${pathLocation}/@${center.lat.toFixed(7)},${center.lng.toFixed(7)},${zoom}z`);
+  }
+
   render() {
     const markers = this.props.markers.map(marker => {
       return (
@@ -45,11 +57,13 @@ class PhotoMap extends Component {
     return (
       <div className="Photo-Map-Container">
         <Map
+          ref="map"
           center={[0, 0]}
           zoom={3}
           zoomControl={false}
           minZoom={3}
           maxZoom={18}
+          onMoveend={this.handleMoveend}
         >
           <TileLayer
             url={`https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=${this.props.mapboxToken}`}
@@ -69,4 +83,4 @@ PhotoMap.propTypes = propTypes;
 PhotoMap.contextTypes = contextTypes;
 PhotoMap.defaultProps = defaultProps;
 
-export default PhotoMap;
+export default withRouter(PhotoMap);

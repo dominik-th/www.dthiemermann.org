@@ -55,7 +55,7 @@ const Root = () => (
         <NavbarFooterLayout navbarType="absolute" exact path="/" component={App} />
         <NavbarFooterLayout navbarType="absolute" exact path="/photo/:imageId?" component={App} />
         <NavbarFooterLayout navBarType="static" exact path="/photos" component={Photos} />
-        <NavbarLayout navbarType="static" exact path="/map" component={Map} />
+        <NavbarLayout navbarType="static" path="/map" component={Map} />
         <Route exact path="/login" component={Login} />
         <NavbarFooterLayout navbarType="absolute" component={App} />
       </Switch>
