@@ -35,9 +35,37 @@ class PhotoMap extends Component {
     if (cutIndex > 0) {
       pathLocation = pathLocation.substr(0, cutIndex - 1);
     }
+    if (!pathLocation.endsWith('/')) {
+      pathLocation += '/';
+    }
     let center = this.refs.map.leafletElement.getCenter();
     let zoom = this.refs.map.leafletElement.getZoom();
-    this.props.history.replace(`${pathLocation}/@${center.lat.toFixed(7)},${center.lng.toFixed(7)},${zoom}z`);
+    this.props.history.replace(`${pathLocation}@${center.lat.toFixed(7)},${center.lng.toFixed(7)},${zoom.toFixed(0)}z`);
+  }
+
+  componentDidMount() {
+    let pathLocation = this.props.location.pathname;
+    let cutIndex = pathLocation.indexOf('@');
+    if (cutIndex > 0) {
+      let parameters = pathLocation.substr(cutIndex + 1, pathLocation.length).split(',');
+      if (parameters.length < 3) return;
+      let lat = parseFloat(parameters[0]);
+      let lng = parseFloat(parameters[1]);
+      let zoom = parseInt(parameters[2]);
+      if (!(lat >= -90 && lat <= 90)) return;
+      if (!(lng >= -180 && lng <=  180)) return;
+      if (!(zoom >= 3 && zoom <= 18)) return;
+      this.refs.map.leafletElement.setView({lat, lng}, zoom, {animate: false});
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let pathLocation = nextProps.location.pathname;
+    let cutIndex = pathLocation.indexOf('@');
+    if (cutIndex < 0 && nextProps.markers.length > 0 && this.props.markers.length !== nextProps.markers.length) {
+      let marker = nextProps.markers[Math.floor(Math.random() * (nextProps.markers.length - 1))];
+      this.refs.map.leafletElement.panTo({lat: marker.location[0], lng: marker.location[1]}, {duration: 1});
+    }
   }
 
   render() {
