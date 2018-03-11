@@ -68,6 +68,10 @@ class PhotoMap extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.markers.length !== nextProps.markers.length;
+  }
+
   render() {
     const markers = this.props.markers.map(marker => {
       return (
