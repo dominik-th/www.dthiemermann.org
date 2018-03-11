@@ -56,6 +56,9 @@ class PhotoMap extends Component {
       if (!(lng >= -180 && lng <=  180)) return;
       if (!(zoom >= 3 && zoom <= 18)) return;
       this.refs.map.leafletElement.setView({lat, lng}, zoom, {animate: false});
+    } else if (this.props.markers.length > 0) {
+      let marker = this.props.markers[Math.floor(Math.random() * (this.props.markers.length - 1))];
+      this.refs.map.leafletElement.panTo({lat: marker.location[0], lng: marker.location[1]}, {duration: .25});
     }
   }
 
@@ -64,7 +67,7 @@ class PhotoMap extends Component {
     let cutIndex = pathLocation.indexOf('@');
     if (cutIndex < 0 && nextProps.markers.length > 0 && this.props.markers.length !== nextProps.markers.length) {
       let marker = nextProps.markers[Math.floor(Math.random() * (nextProps.markers.length - 1))];
-      this.refs.map.leafletElement.panTo({lat: marker.location[0], lng: marker.location[1]}, {duration: 1});
+      this.refs.map.leafletElement.panTo({lat: marker.location[0], lng: marker.location[1]}, {duration: .25});
     }
   }
 
