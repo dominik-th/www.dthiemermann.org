@@ -86,7 +86,8 @@ class PhotoMap extends Component {
       <div className="Photo-Map-Container">
         <Map
           ref="map"
-          center={[0, 0]}
+          // default center to germany
+          center={[51.18622,10.51391]}
           zoom={3}
           zoomControl={false}
           minZoom={3}
