@@ -51,7 +51,7 @@ class PhotoMap extends Component {
       if (parameters.length < 3) return;
       let lat = parseFloat(parameters[0]);
       let lng = parseFloat(parameters[1]);
-      let zoom = parseInt(parameters[2]);
+      let zoom = parseInt(parameters[2], 10);
       if (!(lat >= -90 && lat <= 90)) return;
       if (!(lng >= -180 && lng <=  180)) return;
       if (!(zoom >= 3 && zoom <= 18)) return;
