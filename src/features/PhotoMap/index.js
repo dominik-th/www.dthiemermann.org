@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import { divIcon } from 'leaflet';
 import { Map, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import RouterForwarder from '../../utils/RouterForwarder';
@@ -75,6 +76,14 @@ class PhotoMap extends Component {
     return this.props.markers.length !== nextProps.markers.length;
   }
 
+  createClusterCustomIcon = (cluster) => {
+    return divIcon({
+      className: 'Photo-Map-Cluster-Icon',
+      html: `<div style="background-image: url(http://placehold.it/200x200);"></div><b>${cluster.getChildCount()}</b>`,
+      iconSize: [40, 40]
+    });
+  }
+
   render() {
     const markers = this.props.markers.map(marker => {
       return (
@@ -107,7 +116,7 @@ class PhotoMap extends Component {
             detectRetina
           />
           <ZoomControl position="bottomleft" />
-          <MarkerClusterGroup options={{showCoverageOnHover: false}}>
+          <MarkerClusterGroup options={{iconCreateFunction: this.createClusterCustomIcon, showCoverageOnHover: false}}>
             { markers }
           </MarkerClusterGroup>
         </Map>
