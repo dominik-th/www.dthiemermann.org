@@ -104,6 +104,7 @@ class PhotoMap extends Component {
           <TileLayer
             url={`https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=${this.props.mapboxToken}`}
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            detectRetina
           />
           <ZoomControl position="bottomleft" />
           <MarkerClusterGroup options={{showCoverageOnHover: false}}>

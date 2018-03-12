@@ -66,6 +66,7 @@ class StaticMap extends Component {
         <TileLayer
           url={`https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=${this.props.mapboxToken}`}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          detectRetina
         />
         <CircleMarker ref="location" center={this.props.location} radius={15} color="" />
       </Map>
