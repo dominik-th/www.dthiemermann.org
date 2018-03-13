@@ -76,10 +76,19 @@ class PhotoMap extends Component {
     return this.props.markers.length !== nextProps.markers.length;
   }
 
-  createClusterCustomIcon = (cluster) => {
+  createMarkerCustomIcon = (marker) => {
     return divIcon({
       className: 'Photo-Map-Cluster-Icon',
-      html: `<div style="background-image: url(http://placehold.it/200x200);"></div><b>${cluster.getChildCount()}</b>`,
+      html: `<div style="background-image: url(${marker.thumbnail});"></div>`,
+      iconSize: [40, 40]
+    });
+  }
+
+  createClusterCustomIcon = (cluster) => {
+    let thumbnail = cluster.getAllChildMarkers()[0].options.marker.thumbnail;
+    return divIcon({
+      className: 'Photo-Map-Cluster-Icon',
+      html: `<div style="background-image: url(${thumbnail});"></div><b>${cluster.getChildCount()}</b>`,
       iconSize: [40, 40]
     });
   }
@@ -87,7 +96,7 @@ class PhotoMap extends Component {
   render() {
     const markers = this.props.markers.map(marker => {
       return (
-        <Marker key={marker.key} position={marker.location}>
+        <Marker key={marker.key} position={marker.location} icon={this.createMarkerCustomIcon(marker)} marker={marker}>
           <Popup>
             <RouterForwarder context={this.context}>
               {marker.title}

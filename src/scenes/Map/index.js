@@ -30,6 +30,7 @@ const mapStateToProps = (state, ownProps) => {
         location: [image.location.lat, image.location.long],
         title: image.title,
         url: `/photo/${image.id}`,
+        thumbnail: `${config.backend.url}/photo/${image.id}`,
       }
     });
   }
