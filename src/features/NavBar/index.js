@@ -89,7 +89,7 @@ class NavBar extends Component {
                 <NavLink exact to="/photos">Photos</NavLink>
               </div>
               <div className="NavItem">
-                <NavLink exact to="/map">Map</NavLink>
+                <NavLink to="/map">Map</NavLink>
               </div>
               <div className="NavItem">
                 <NavLink exact to="#">About me</NavLink>
