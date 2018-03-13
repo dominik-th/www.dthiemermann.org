@@ -9,10 +9,10 @@ class Cover extends Component {
 
   componentWillMount() {
     Mousetrap.bind(['left', 'a'], (event) => {
-      this.props.history.push(this.props.prevImage.id);
+      this.props.history.push(`/photo/${this.props.prevImage.id}`);
     });
     Mousetrap.bind(['right', 'd'], (event) => {
-      this.props.history.push(this.props.nextImage.id);
+      this.props.history.push(`/photo/${this.props.nextImage.id}`);
     });
   }
 
