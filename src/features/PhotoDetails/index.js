@@ -27,7 +27,7 @@ class PhotoDetails extends Component {
         <Container>
           <div className="Photo-Details-Wrapper">
             <div className="Flex-Item Map-Item">
-              <StaticMap className="Map" mapboxToken={this.props.mapboxToken} location={location} />
+              <StaticMap className="Map" mapboxToken={this.props.mapboxToken} coordinates={location} />
             </div>
             <div className="Flex-Item">
               <Specs image={this.props.image} />

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import { Map, CircleMarker, TileLayer } from 'react-leaflet';
 
 const propTypes = {
   mapboxToken: PropTypes.string.isRequired,
-  location: PropTypes.arrayOf(PropTypes.number).isRequired,
+  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoomLevels: PropTypes.arrayOf(PropTypes.number),
 }
 
@@ -39,17 +40,21 @@ class StaticMap extends Component {
     }
   }
 
+  handleMarkerclick = () => {
+    this.props.history.push(`/map/@${this.props.coordinates[0]},${this.props.coordinates[1]},13z`)
+  }
+
   setZoom = (level, markerRadius = 15) => {
-    this.refs.map.leafletElement.setView(this.refs.location.props.center, level);
-    this.refs.location.leafletElement.setRadius(markerRadius);
+    this.refs.map.leafletElement.setView(this.refs.centerMarker.props.center, level);
+    this.refs.centerMarker.leafletElement.setRadius(markerRadius);
   }
 
   render() {
-    const { location, zoomLevels, ...rest } = this.props;
+    const { coordinates, zoomLevels, ...rest } = this.props;
     return (
       <Map
         ref="map"
-        center={location}
+        center={coordinates}
         zoom={zoomLevels[0]}
         zoomAnimation={false}
         zoomControl={false}
@@ -68,7 +73,7 @@ class StaticMap extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           detectRetina
         />
-        <CircleMarker ref="location" center={this.props.location} radius={15} color="" />
+        <CircleMarker ref="centerMarker" center={coordinates} radius={15} color="" onClick={this.handleMarkerclick} />
       </Map>
     );
   }
@@ -77,4 +82,4 @@ class StaticMap extends Component {
 StaticMap.propTypes = propTypes;
 StaticMap.defaultProps = defaultProps;
 
-export default StaticMap;
+export default withRouter(StaticMap);
