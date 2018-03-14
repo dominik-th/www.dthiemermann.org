@@ -8,6 +8,10 @@
   flex: 1;
 }
 
+.Photo-Map-Preview {
+  width: 20vw;
+}
+
 /* https://github.com/turban/Leaflet.Photo */
 .Photo-Map-Cluster-Icon {
   border: 2px solid #fff;

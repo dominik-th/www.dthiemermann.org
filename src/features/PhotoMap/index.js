@@ -99,9 +99,9 @@ class PhotoMap extends Component {
         <Marker key={marker.key} position={marker.location} icon={this.createMarkerCustomIcon(marker)} marker={marker}>
           <Popup>
             <RouterForwarder context={this.context}>
-              {marker.title}
+              <img className="Photo-Map-Preview" src={marker.thumbnail} alt="preview" />
               <br />
-              <Link to={marker.url}>Details</Link>
+              <Link to={marker.url}>{marker.title}</Link>
             </RouterForwarder>
           </Popup>
         </Marker>
