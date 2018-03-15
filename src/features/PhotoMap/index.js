@@ -97,11 +97,12 @@ class PhotoMap extends Component {
     const markers = this.props.markers.map(marker => {
       return (
         <Marker key={marker.key} position={marker.location} icon={this.createMarkerCustomIcon(marker)} marker={marker}>
-          <Popup>
+          <Popup className="Photo-Map-Popup" minWidth={400}>
             <RouterForwarder context={this.context}>
               <img className="Photo-Map-Preview" src={marker.thumbnail} alt="preview" />
-              <br />
-              <Link to={marker.url}>{marker.title}</Link>
+              <p>
+                <Link to={marker.url}>{marker.title}</Link>
+              </p>
             </RouterForwarder>
           </Popup>
         </Marker>

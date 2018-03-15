@@ -8,6 +8,42 @@
   flex: 1;
 }
 
+.Photo-Map-Popup a.leaflet-popup-close-button {
+  top: -13px;
+  right: -13px;
+  background-color: #fff;
+  padding: 7px;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.7);
+  color: #555;
+}
+
+.Photo-Map-Popup a.leaflet-popup-close-button:hover {
+  color: #333;
+  background-color: #eee;
+}
+
+.Photo-Map-Popup .leaflet-popup-content-wrapper {
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.Photo-Map-Popup .leaflet-popup-content {
+  margin: 0;
+}
+
+.Photo-Map-Popup img,
+.Photo-Map-Popup video {
+  display: block;
+  width: 100%;
+}
+
+.Photo-Map-Popup p {
+  margin: 5px 0 0 0;
+}
+
 .Photo-Map-Preview {
   width: 20vw;
 }
