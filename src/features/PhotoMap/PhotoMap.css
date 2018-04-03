@@ -8,6 +8,11 @@
   flex: 1;
 }
 
+.Photo-Map-Popup {
+  width: 400px;
+  max-width: 90vw;
+}
+
 .Photo-Map-Popup a.leaflet-popup-close-button {
   top: -13px;
   right: -13px;
@@ -31,6 +36,7 @@
 }
 
 .Photo-Map-Popup .leaflet-popup-content {
+  width: auto !important;
   margin: 0;
 }
 
