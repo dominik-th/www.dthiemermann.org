@@ -16,6 +16,15 @@ class Gallery extends Component {
       maxRowHeight: 500,
       lastRow: 'justify',
       cssAnimation: true,
+      sizeRangeSuffixes: {
+        'lt100':'/t',
+        'lt240':'/s',
+        'lt320':'/n',
+        'lt500':'/m',
+        'lt640':'/z',
+        'lt1024':'/l',
+        'lt1600':'/h'
+      }
     });
   }
 
