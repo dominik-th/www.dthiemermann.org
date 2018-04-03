@@ -50,7 +50,7 @@ class App extends Component {
         { (!loading && currentImage) &&
           <div>
             <Cover
-              imageUrl={`${config.backend.url}/photo/${currentImage.id}`}
+              imageUrl={currentImage.url}
               prevImage={prevImage}
               nextImage={nextImage}
             />

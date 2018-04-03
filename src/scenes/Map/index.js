@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { fetchPhotos } from '../../actions';
 import config from '../../env/config';
 import PhotoMap from '../../features/PhotoMap';
@@ -25,12 +26,15 @@ const mapStateToProps = (state, ownProps) => {
   };
   if (storage) {
     stateProps.markers = storage.images.map(image => {
+      let thumbnailSq = _.filter(image.thumbnails, { flickrSuffix: 'sq' })[0];
+      let thumbnailM = _.filter(image.thumbnails, { flickrSuffix: 'm' })[0];
       return {
         key: image.id,
         location: [image.location.lat, image.location.long],
         title: image.title,
         url: `/photo/${image.id}`,
-        thumbnail: `${config.backend.url}/photo/${image.id}`,
+        thumbnail: thumbnailSq.url,
+        preview: thumbnailM.url,
       }
     });
   }
