@@ -20,7 +20,10 @@ import config from './env/config';
 
 let history = createHistory();
 if (config.piwik) {
-  history = PiwikReactRouter(config.piwik).connectToHistory(history);
+  let piwik = PiwikReactRouter(config.piwik);
+  piwik.push(['enableHeartBeatTimer']);
+  piwik.push(['setCustomDimension', 1, process.env.REACT_APP_COMMIT]);
+  history = piwik.connectToHistory(history);
 }
 const historyMiddleware = routerMiddleware(history);
 
